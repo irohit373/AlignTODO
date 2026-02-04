@@ -2,6 +2,11 @@
 
 A minimalist task manager focus on clear structure and secure implementation.
 
+## Live Demo
+
+Check out the live application: [Align TODO](https://align-todo.vercel.app/)
+
+
 ## Tech Stack
 - Framework: Next.js 15 (App Router)
 - Database: PostgreSQL
@@ -33,3 +38,5 @@ The UI follows a strict "Edge" design system:
 - Clean REST API implementation (CRUD).
 - Responsive layout design without external component libraries.
 - Cryptographically signed sessions for state persistence.
+
+
