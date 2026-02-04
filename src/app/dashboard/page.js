@@ -112,69 +112,69 @@ export default function DashboardPage() {
     const completed = todos.filter(t => t.status === 'completed').length;
 
     return (
-        <div className="min-h-screen bg-gray-50">
+        <div className="min-h-screen bg-white">
             {/* NAVIGATION BAR */}
-            <header className="bg-white border-b border-gray-200">
-                <div className="max-w-2xl mx-auto px-4 py-4 flex justify-between items-center">
-                    <h1 className="text-xl font-bold text-blue-600">Align TODO</h1>
+            <header className="border-b-2 border-black">
+                <div className="max-w-3xl mx-auto px-6 py-6 flex justify-between items-center">
+                    <h1 className="text-2xl font-black uppercase tracking-tighter">Align TODO</h1>
                     <button
                         onClick={logout}
-                        className="text-sm font-medium text-gray-500 hover:text-red-600 transition-colors"
+                        className="text-xs font-bold uppercase tracking-widest border border-black px-4 py-2 hover:bg-black hover:text-white transition-colors"
                     >
-                        Logout
+                        Sign Out
                     </button>
                 </div>
             </header>
 
-            <main className="max-w-2xl mx-auto px-4 py-8">
+            <main className="max-w-3xl mx-auto px-6 py-12">
                 {/* SUMMARY STATS */}
-                <div className="flex gap-6 mb-8 bg-white p-4 rounded-lg border border-gray-200 shadow-sm text-sm">
-                    <div className="flex flex-col">
-                        <span className="text-gray-500">Total</span>
-                        <span className="text-lg font-bold">{todos.length}</span>
+                <div className="grid grid-cols-3 border-2 border-black mb-12">
+                    <div className="p-6 border-r-2 border-black">
+                        <span className="text-[10px] uppercase font-bold tracking-widest text-black/50 block mb-1">Total</span>
+                        <span className="text-3xl font-black">{todos.length}</span>
                     </div>
-                    <div className="flex flex-col">
-                        <span className="text-gray-500">Pending</span>
-                        <span className="text-lg font-bold text-orange-500">{pending}</span>
+                    <div className="p-6 border-r-2 border-black">
+                        <span className="text-[10px] uppercase font-bold tracking-widest text-black/50 block mb-1">Pending</span>
+                        <span className="text-3xl font-black">{pending}</span>
                     </div>
-                    <div className="flex flex-col">
-                        <span className="text-gray-500">Completed</span>
-                        <span className="text-lg font-bold text-green-500">{completed}</span>
+                    <div className="p-6">
+                        <span className="text-[10px] uppercase font-bold tracking-widest text-black/50 block mb-1">Done</span>
+                        <span className="text-3xl font-black">{completed}</span>
                     </div>
                 </div>
 
                 {/* TASK INPUT FORM */}
-                <div className="mb-8">
-                    <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-400 mb-2">New Task</h2>
+                <div className="mb-12">
+                    <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-black/40 mb-4">Add Task</h2>
                     <TodoForm onSubmit={createTodo} />
                 </div>
 
                 {/* FILTER CONTROLS */}
-                <div className="flex items-center justify-between mb-4">
-                    <h2 className="text-sm font-semibold uppercase tracking-wider text-gray-400">My Tasks</h2>
-                    <div className="flex bg-gray-200 p-1 rounded-md">
+                <div className="flex items-end justify-between mb-6 border-b-2 border-black pb-2">
+                    <h2 className="text-xs font-bold uppercase tracking-[0.2em] text-black">Workspace</h2>
+                    <div className="flex gap-2">
                         {['all', 'pending', 'completed'].map((f) => (
                             <button
                                 key={f}
                                 onClick={() => setFilter(f)}
-                                className={`px-4 py-1 rounded text-xs font-bold transition-all ${filter === f
-                                        ? 'bg-white text-blue-600 shadow-sm'
-                                        : 'text-gray-500 hover:text-gray-700'
+                                className={`px-4 py-1 text-[10px] font-black uppercase tracking-widest transition-all border border-black ${filter === f
+                                    ? 'bg-black text-white'
+                                    : 'bg-white text-black hover:bg-black/5'
                                     }`}
                             >
-                                {f.toUpperCase()}
+                                {f}
                             </button>
                         ))}
                     </div>
                 </div>
 
                 {/* TASK LIST DISPLAY */}
-                <div className="space-y-3">
+                <div className="space-y-4">
                     {loading ? (
-                        <div className="py-10 text-center text-gray-400">Loading your tasks...</div>
+                        <div className="py-20 text-center font-mono text-xs uppercase tracking-widest animate-pulse">Loading_Tasks...</div>
                     ) : todos.length === 0 ? (
-                        <div className="py-10 text-center bg-white border border-dashed border-gray-300 rounded-lg text-gray-400">
-                            No {filter !== 'all' ? filter : ''} tasks found.
+                        <div className="py-20 text-center border-2 border-dashed border-black/20 font-mono text-xs uppercase tracking-widest text-black/40">
+                            No_{filter}_tasks_found
                         </div>
                     ) : (
                         todos.map((todo) => (

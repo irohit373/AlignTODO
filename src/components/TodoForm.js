@@ -25,19 +25,19 @@ export default function TodoForm({ onSubmit }) {
     }
 
     return (
-        <form onSubmit={handleSubmit} className="flex gap-2 mb-4">
+        <form onSubmit={handleSubmit} className="flex gap-0 mb-4 border-2 border-black">
             <input
                 type="text"
                 value={title}
                 onChange={(e) => setTitle(e.target.value)}
-                placeholder="What needs to be done?"
-                className="flex-1 border rounded p-2 outline-none focus:border-blue-500"
+                placeholder="WHAT NEEDS TO BE DONE?"
+                className="flex-1 p-4 outline-none font-bold uppercase tracking-widest text-sm placeholder:text-black/20"
                 disabled={loading}
             />
             <button
                 type="submit"
                 disabled={loading}
-                className="bg-blue-600 text-white px-6 py-2 rounded hover:bg-blue-700 disabled:bg-gray-400 font-medium"
+                className="bg-black text-white px-8 py-4 font-black uppercase tracking-widest text-sm hover:bg-white hover:text-black border-l-2 border-black transition-colors disabled:bg-gray-200"
             >
                 {loading ? '...' : 'Add'}
             </button>

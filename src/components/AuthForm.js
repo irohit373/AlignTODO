@@ -1,6 +1,6 @@
 'use client';
 
-// Reusable form for both login and register pages
+// Reusable form for both login and register pages - Pure Simple Edge Design
 
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
@@ -43,38 +43,41 @@ export default function AuthForm({ mode = 'login' }) {
     }
 
     return (
-        <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-            <div className="w-full max-w-sm bg-white rounded-lg shadow p-6">
-                <h1 className="text-2xl font-bold text-center mb-6">
-                    {isLogin ? 'Sign In' : 'Create Account'}
-                </h1>
+        <div className="min-h-screen flex items-center justify-center bg-white p-6">
+            <div className="w-full max-w-sm border-2 border-black p-8 bg-white">
+                <header className="mb-8">
+                    <h1 className="text-3xl font-black uppercase tracking-tighter mb-2">
+                        {isLogin ? 'Enter' : 'Join'}
+                    </h1>
+                    <div className="h-1 w-12 bg-black"></div>
+                </header>
 
                 {error && (
-                    <div className="bg-red-100 text-red-700 p-3 rounded mb-4 text-sm">
-                        {error}
+                    <div className="bg-black text-white p-4 font-bold text-xs uppercase tracking-widest mb-6">
+                        ERROR: {error}
                     </div>
                 )}
 
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form onSubmit={handleSubmit} className="space-y-6">
                     <div>
-                        <label className="block text-sm font-medium mb-1">Email</label>
+                        <label className="block text-[10px] font-black uppercase tracking-[0.2em] mb-2">Email</label>
                         <input
                             type="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
-                            className="w-full border rounded p-2"
-                            placeholder="you@example.com"
+                            className="w-full border-2 border-black p-3 font-bold text-sm outline-none focus:bg-black/5"
+                            placeholder="USER@DOMAIN.COM"
                             required
                         />
                     </div>
 
                     <div>
-                        <label className="block text-sm font-medium mb-1">Password</label>
+                        <label className="block text-[10px] font-black uppercase tracking-[0.2em] mb-2">Password</label>
                         <input
                             type="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
-                            className="w-full border rounded p-2"
+                            className="w-full border-2 border-black p-3 font-bold text-sm outline-none focus:bg-black/5"
                             placeholder="••••••••"
                             minLength={6}
                             required
@@ -84,18 +87,20 @@ export default function AuthForm({ mode = 'login' }) {
                     <button
                         type="submit"
                         disabled={loading}
-                        className="w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 disabled:opacity-50"
+                        className="w-full bg-black text-white py-4 font-black uppercase tracking-widest text-sm border-2 border-black hover:bg-white hover:text-black transition-colors disabled:bg-black/20"
                     >
-                        {loading ? 'Loading...' : (isLogin ? 'Sign In' : 'Sign Up')}
+                        {loading ? 'PROCESSING...' : (isLogin ? 'Sign In' : 'Sign Up')}
                     </button>
                 </form>
 
-                <p className="text-center mt-4 text-sm text-gray-600">
-                    {isLogin ? "Don't have an account? " : 'Already have an account? '}
-                    <Link href={isLogin ? '/register' : '/login'} className="text-blue-600 hover:underline">
-                        {isLogin ? 'Sign up' : 'Sign in'}
-                    </Link>
-                </p>
+                <footer className="mt-8 pt-6 border-t border-black/10">
+                    <p className="text-center text-[10px] font-bold uppercase tracking-widest leading-loose">
+                        {isLogin ? "Need access? " : 'Already a member? '}
+                        <Link href={isLogin ? '/register' : '/login'} className="underline underline-offset-4 hover:bg-black hover:text-white px-1">
+                            {isLogin ? 'Create Account' : 'Login instead'}
+                        </Link>
+                    </p>
+                </footer>
             </div>
         </div>
     );

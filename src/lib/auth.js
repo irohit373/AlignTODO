@@ -1,4 +1,4 @@
-// Authentication utilities
+// Authentication
 // Handles password hashing, JWT tokens, and cookies
 
 import jwt from 'jsonwebtoken';
@@ -20,7 +20,7 @@ export function createToken(userId, email) {
     return jwt.sign(
         { userId, email },
         process.env.JWT_SECRET,
-        { expiresIn: '7d' }
+        { expiresIn: '1d' }
     );
 }
 
